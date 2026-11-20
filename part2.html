@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#163e36"><title>28학년도 입시 시뮬레이터</title><link rel="stylesheet" href="sim.css?v=regular20"></head>
+<body><header class="mast"><div class="brand"><span class="symbol" aria-hidden="true">⑂</span><b>28학년도 입시 시뮬레이터</b><span class="brandline">학부모 입시설명회</span></div><button class="entryHelp" data-act="help" aria-label="이용 도움말">?</button></header>
+<section id="welcome" aria-labelledby="welcomeTitle">
+  <div class="welcomeCopy">
+    <h1 id="welcomeTitle" tabindex="-1">어떤 성적으로<br>지원해 볼까요?</h1>
+    <p>변화한 입시제도에 맞는 전략을 테스트해보는 시뮬레이터입니다.</p>
+    <div class="entryChoices"><a class="enterGame" href="#manual">성적 직접 입력하기</a><a class="enterGame secondary" href="#generate">성적 임의 생성</a></div>
+  </div>
+  <div class="art welcomeScene" aria-hidden="true"></div>
+</section>
+<section id="entryStep" aria-labelledby="entryTitle" hidden></section>
+<main id="gameScreen" hidden><aside id="atlas" aria-label="학생의 입시 경로"></aside><section id="desk" aria-label="현재 상황과 선택"></section></main>
+<dialog id="gradeDialog" aria-labelledby="gradeTitle">
+  <header><h2 id="gradeTitle">고3 성적표</h2><button type="button" data-act="closeGrades" aria-label="성적표 닫기">×</button></header>
+  <div id="gradeTables"></div><div class="gradeActions"><button class="primary" data-act="closeGrades" id="gradeContinue">닫고 원서 쓰기</button></div>
+</dialog>
+<div id="addedNotice" role="status" aria-live="polite"></div>
+<dialog id="seminarInvite" aria-labelledby="seminarTitle" aria-describedby="seminarMessage" closedby="none">
+<div class="seminarInvite">
+<div><h2 id="seminarTitle">판동샘수학학원 입시설명회</h2><p id="seminarMessage">우리 아이의 학생부와 수능 성적, 어떤 전형에서 강점이 될까요? 설명회에서 지원 전략을 함께 살펴보세요.</p></div>
+<!-- 접수가 열리면 아래 href를 실제 신청 주소로 교체하세요. -->
+<div class="inviteActions"><a href="seminar.html">입시설명회 참여하기</a><button type="button" id="dismissInvite" autofocus>닫기</button><button type="button" id="hideInviteToday">오늘 하루 보지 않기</button></div>
+</div>
+</dialog>
+<footer id="gameFooter" hidden><span>2030학년도 가상 대입</span><span id="persist"></span><button data-act="sources">출처와 시뮬레이션 가정</button></footer>
+<dialog id="drawer" aria-labelledby="dialogTitle"><header><h2 id="dialogTitle"></h2><button data-act="close">닫기 ×</button></header><div id="dialogBody"></div></dialog>
+<script src="sim-catalog.js?v=regular20"></script><script src="sim-engine.js?v=regular20"></script><script src="sim-ui.js?v=regular20"></script></body></html>

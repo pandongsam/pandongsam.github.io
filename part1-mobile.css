@@ -1,0 +1,107 @@
+/* Phone reading layout for the Part 1 deck. */
+@media screen and (pointer: coarse) and (max-width: 700px), screen and (pointer: coarse) and (orientation: landscape) and (max-height: 550px) and (max-width: 1000px) {
+  body[data-former-map-count] {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  .top, .dock { padding: 3px max(8px, env(safe-area-inset-right)) 3px max(8px, env(safe-area-inset-left)); gap: 4px; }
+  .dock { padding-bottom: max(3px, env(safe-area-inset-bottom)); flex-wrap: wrap; }
+  .topright, .moves, .tools { gap: 3px; }
+  .topright button, .tools button, .moves button { min-height: 36px; padding: 4px 7px; font-size: 13px; }
+  .moves button { min-width: 36px; font-size: 20px; }
+  .count { min-width: 45px; font-size: 12px; }
+  .brand { font-size: 13px; }
+  .partlabel { display: none; }
+  body main, body main.zoom, body main:not(.zoom):has(.slide:not([hidden])) {
+    display: block; padding: 6px; min-width: 0; overflow: auto;
+  }
+  body main .slide[data-n], body main:not(.zoom) .slide[data-n], body main.zoom .slide[data-n] {
+    width: 100%; min-width: 0; max-width: 100%; height: auto; min-height: 0;
+    aspect-ratio: auto; overflow: visible; margin: 0; word-break: keep-all;
+    letter-spacing: normal; --reading-text: 16px; --table-text: 14px;
+  }
+  body main.zoom .slide[data-n] { --reading-text: 19px; --table-text: 17px; }
+  .slide .sheetHead { margin: 16px 12px 0; padding: 0 0 10px; }
+  .sheetHead .meta, .slide .sheetFoot { font-size: 12px; line-height: 1.4; }
+  .slide .sheetHead h1 { font-size: 25px; line-height: 1.27; margin-top: 6px; }
+  .sheetHead .legend { float: none; margin: 7px 0 0; gap: 5px; flex-wrap: wrap; }
+  .sheetHead .legend b { font-size: 12px; padding: 2px 6px; }
+  .slide .sheetFoot { margin: 10px 12px; padding-top: 8px; }
+  main .slide .content {
+    display: grid; grid-template-columns: minmax(0, 1fr); justify-content: stretch;
+    margin: 14px 12px; gap: 14px; overflow: visible; font-size: var(--reading-text); line-height: 1.5;
+  }
+  .content > * + * { margin-top: 0; }
+  .content :is(.columns, .types4, .zone, .scatter, .twostack), .guide-pair {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px;
+  }
+  .content :is(.columns, .types4, .tablegroup, .twostack, .zone) > *, .guide-pair > * { min-width: 0; }
+  .tablegroup + .tablegroup { margin-top: 10px; }
+  .content .tablegroup h3, .content > h3 { font-size: 16px; line-height: 1.4; padding: 6px; }
+
+  /* The table owns horizontal movement. Its title, notes and slide footer stay in place. */
+  .phone-scroll, .slide .aligned-scroll {
+    width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain;
+  }
+  .slide[data-n] :is(.phone-scroll, .aligned-scroll) table {
+    width: 100%; font-size: var(--table-text); line-height: 1.45; letter-spacing: normal;
+  }
+  .slide[data-n] :is(.phone-scroll, .aligned-scroll) :is(th, td) {
+    padding: 6px; word-break: keep-all; overflow-wrap: normal; white-space: normal;
+  }
+  .slide[data-n] :is(.phone-scroll, .aligned-scroll) .native th:first-child:not(.phone-row-label) { position: static; }
+  .slide[data-n] :is(.phone-scroll, .aligned-scroll) .phone-row-label {
+    position: sticky; left: 0; z-index: 2;
+  }
+  .slide .aligned-scroll .aligned-admissions { min-width: 910px; }
+  .phone-scroll .distribution { table-layout: auto; min-width: 54em; }
+  .phone-scroll .native.zones { min-width: 380px; }
+  .slide .phone-scroll .cohorts { margin: 0; }
+  .slide .cohorts thead { font-size: var(--table-text); }
+  .content .ribbon, .content .extract, .content .zone p { font-size: var(--reading-text); padding: 10px 12px; }
+  .content .itemlist { gap: 0; }
+  .slide[data-n] .itemlist > div { gap: 9px; padding: 9px 2px; align-items: baseline; }
+  .slide[data-n] .content .itemlist p, .slide .types4 p { font-size: var(--reading-text); line-height: 1.55; }
+  .slide .itemlist b, .slide .types4 small, .zone .zone-direction { font-size: 14px; }
+  .slide .types4 section { padding: 12px; }
+  .slide .types4 h3 { font-size: 18px; }
+  .phone-scroll > .chart { min-width: 480px; gap: 10px; }
+  .chart .barrow > b { width: 48px; font-size: 14px; }
+  .chart .barrow span, .chart .keys i, .chart .axis { font-size: 12px; }
+  .chart .axis { margin-left: 50px; }
+  .phone-scroll > .grade-rows { min-width: 690px; grid-template-columns: minmax(0, 1fr); }
+  .grade-rows .grade-band { min-height: 54px; }
+  .grade-rows .grade-band b, .grade-rows h3 { font-size: 16px; }
+  .grade-rows .grade-band small, .grade-rows .grade-bridge span { font-size: 12px; }
+  .grade-rows .grade-bridge { grid-column: 1; height: 26px; }
+  .grade-figure figcaption { font-size: 16px; gap: 8px; }
+  .grade-figure figcaption span, .bands small { font-size: 12px; }
+  .grade-figure .grade-takeaway { margin: 12px 0; font-size: var(--reading-text); }
+  .letters span, .bands b { font-size: 14px; }
+
+  .slide .family-inner { position: static; padding: 18px 12px 12px; gap: 12px; }
+  .family-inner header p, .family-inner footer { font-size: 12px; flex-wrap: wrap; gap: 4px; }
+  .family-inner h1 { font-size: 25px; line-height: 1.28; margin: 8px 0 0; }
+  .family-inner .family-topic { font-size: 14px; padding: 4px 9px; }
+  .family-inner .family-panel { padding: 0; gap: 12px; }
+  .family-panel h2 { font-size: 20px; margin-bottom: 9px; }
+  .family-panel h3 { font-size: 19px; }
+  .family-panel h4 { font-size: 16px; margin: 12px 0 4px; }
+  .family-panel .guide-pair aside { padding: 14px; }
+  .family-panel p, .family-panel li, .family-panel .guide-note { font-size: var(--reading-text); line-height: 1.55; }
+  .family-panel ul { padding-left: 1.2em; }
+  .family-panel .guide-note { padding: 9px 12px; }
+
+  .slide .academy-cover { position: relative; min-height: 62svh; padding: 24px; gap: 16px; }
+  .academy-cover .cover-edition, .academy-cover .cover-speaker { position: static; font-size: 16px; }
+  .academy-cover .cover-speaker span, .academy-cover .cover-edition span { font-size: 14px; }
+  .academy-cover h1 { font-size: clamp(34px, 8vw, 52px); }
+  .academy-cover h1 span { font-size: 23px; }
+  .academy-cover .cover-sub { font-size: 18px; line-height: 1.5; margin: 0; }
+  .slide :is(.contents, .divider, .end, .closing) { height: auto; min-height: 62svh; padding: 24px 18px; }
+  .contents h1, .divider h1, .closing h1, .end h1 { font-size: 32px; max-width: 100%; }
+  .contents a, .divider blockquote, .end p, .closing p, .divider .chapterNo { font-size: var(--reading-text); }
+  .contents a { padding: 12px 0; }
+  .contents a b, .contents small, .divider small, .end small { font-size: 13px; }
+}
