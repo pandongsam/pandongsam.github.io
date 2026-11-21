@@ -92,8 +92,8 @@ function advanceTree() {
  treeTimer = setTimeout(land, 380);
 }
 
-const chapterStarts=[1,3,6,12,41,46,60,64];
-const chapterLabels=['표지와 목차','00 시작하기 전에','2028 인원 분석','5등급제 실시에 따른 변화','논서술형 평가 역량 변화','통합형 수능에 따른 변화','마무리','2부 중학생 학부모 진학 안내'];
+const chapterStarts=[1,3,6,12,41,46,60,63];
+const chapterLabels=['표지와 목차','00 시작하기 전에','2028 인원 분석','5등급제 실시에 따른 변화','논서술형 평가 역량 변화','통합형 수능에 따른 변화','2부 중학생 학부모 진학 안내 · 진짜 우리가 궁금한것은','마무리'];
 function route(){
  const m=location.hash.match(/^#(\d+)(?:\.(\d+))?$/);
  // The former combined deck opened Part 2 at pages 80–85.
@@ -104,7 +104,7 @@ function route(){
   target.hash=String(formerMapPage)+(m[2]?'.'+m[2]:'');
   location.replace(target.href);return;
  }
- const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? requested-16 : requested));
+ const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? [63,64,65,67][requested-76] : requested));
  const steps=n===glossaryPage?termTabs.length:n===guidePage?guidePanels.length:isMapDeck?journey[n-1].steps.length:1;
  const s=Math.max(0,Math.min(steps-1,m?Number(m[2]||1)-1:0));
  show(n,s);
@@ -159,7 +159,7 @@ function show(n,s){
   }
  }
  byId('count').textContent=n+' / '+total;byId('progress').style.width=(n/total*100)+'%';
- byId('part').textContent=slide.classList.contains('parent-chapter')?'2부　중학생 학부모 진학 안내':!isMapDeck?'1부　대교협 설명회':'2부　학부모 대입 지도';
+ byId('part').textContent=slide.classList.contains('parent-chapter')?'2부　중학생 학부모 진학 안내':!isMapDeck&&n>=chapterStarts.at(-1)?'마무리':!isMapDeck?'1부　대교협 설명회':'2부　학부모 대입 지도';
  byId('prev').disabled=n===1;byId('next').disabled=n===total;
  byId('announce').textContent=n+'장. '+labels[n-1];
  document.title=labels[n-1]+(isMapDeck?' · 2부 학부모 대입 지도':' · 2028 대입 설명회');
