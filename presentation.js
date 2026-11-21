@@ -92,8 +92,8 @@ function advanceTree() {
  treeTimer = setTimeout(land, 380);
 }
 
-const chapterStarts=[1,3,6,12,40,45,59];
-const chapterLabels=['표지와 목차','00 시작하기 전에','2028 인원 분석','5등급제 실시에 따른 변화','논서술형 평가 역량 변화','통합형 수능에 따른 변화','마무리'];
+const chapterStarts=[1,3,6,12,41,46,60,64];
+const chapterLabels=['표지와 목차','00 시작하기 전에','2028 인원 분석','5등급제 실시에 따른 변화','논서술형 평가 역량 변화','통합형 수능에 따른 변화','마무리','2부 중학생 학부모 진학 안내'];
 function route(){
  const m=location.hash.match(/^#(\d+)(?:\.(\d+))?$/);
  // The former combined deck opened Part 2 at pages 80–85.
@@ -104,7 +104,7 @@ function route(){
   target.hash=String(formerMapPage)+(m[2]?'.'+m[2]:'');
   location.replace(target.href);return;
  }
- const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? requested-17 : requested));
+ const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? requested-16 : requested));
  const steps=n===glossaryPage?termTabs.length:n===guidePage?guidePanels.length:isMapDeck?journey[n-1].steps.length:1;
  const s=Math.max(0,Math.min(steps-1,m?Number(m[2]||1)-1:0));
  show(n,s);
@@ -114,6 +114,22 @@ function go(n,s=0){
  const hash='#'+n+(s?'.'+(s+1):'');
  if(location.hash===hash)route();else location.hash=hash;
 }
+const autoButton=byId('parentAuto');
+let autoPaused=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let autoTimer;
+function scheduleParentPage(){
+ clearTimeout(autoTimer);
+ if(!autoButton)return;
+ const hasNext=slides[page-1]?.classList.contains('parent-chapter')&&page<total;
+ autoButton.hidden=!hasNext;
+ autoButton.textContent=autoPaused?'자동 넘김 시작':'자동 넘김 일시정지';
+ if(hasNext&&!autoPaused&&!document.hidden&&!dialog.open){
+  autoTimer=setTimeout(()=>go(page+1),20000);
+ }
+}
+autoButton?.addEventListener('click',()=>{autoPaused=!autoPaused;scheduleParentPage()});
+document.addEventListener('visibilitychange',scheduleParentPage);
+dialog.addEventListener('close',scheduleParentPage);
 function show(n,s){
  const previousStep=step;
  const prevPage=page,oldCenter=isMapDeck&&prevPage>0?slides[prevPage-1].querySelector('.station.selected circle'):null;
@@ -143,12 +159,13 @@ function show(n,s){
   }
  }
  byId('count').textContent=n+' / '+total;byId('progress').style.width=(n/total*100)+'%';
- byId('part').textContent=!isMapDeck?'1부　대교협 설명회':'2부　학부모 대입 지도';
+ byId('part').textContent=slide.classList.contains('parent-chapter')?'2부　중학생 학부모 진학 안내':!isMapDeck?'1부　대교협 설명회':'2부　학부모 대입 지도';
  byId('prev').disabled=n===1;byId('next').disabled=n===total;
  byId('announce').textContent=n+'장. '+labels[n-1];
  document.title=labels[n-1]+(isMapDeck?' · 2부 학부모 대입 지도':' · 2028 대입 설명회');
  if(prevPage!==n){main.scrollTo(0,0);slide.querySelector('.content')?.scrollTo(0,0)}
  if(dialog.open)dialog.close();
+ scheduleParentPage();
 }
 function showContents(){
  opener=document.activeElement;
@@ -163,7 +180,7 @@ function showContents(){
   }
   const list=document.createElement('div');list.className='tocLinks';
   labels.forEach((label,i)=>{let a=document.createElement('a');a.href='#'+(i+1);a.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b>';a.append(document.createTextNode(label));if(i+1===page)a.setAttribute('aria-current','page');list.append(a)});inside.append(list);
- dialog.showModal();dialog.scrollTop=0;
+ clearTimeout(autoTimer);dialog.showModal();dialog.scrollTop=0;
 }
 function finishTermAnimation() {
  const panel = byId(termTabs[step].getAttribute('aria-controls'));
