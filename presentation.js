@@ -114,22 +114,6 @@ function go(n,s=0){
  const hash='#'+n+(s?'.'+(s+1):'');
  if(location.hash===hash)route();else location.hash=hash;
 }
-const autoButton=byId('parentAuto');
-let autoPaused=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let autoTimer;
-function scheduleParentPage(){
- clearTimeout(autoTimer);
- if(!autoButton)return;
- const hasNext=slides[page-1]?.classList.contains('parent-chapter')&&page<total;
- autoButton.hidden=!hasNext;
- autoButton.textContent=autoPaused?'자동 넘김 시작':'자동 넘김 일시정지';
- if(hasNext&&!autoPaused&&!document.hidden&&!dialog.open){
-  autoTimer=setTimeout(()=>go(page+1),20000);
- }
-}
-autoButton?.addEventListener('click',()=>{autoPaused=!autoPaused;scheduleParentPage()});
-document.addEventListener('visibilitychange',scheduleParentPage);
-dialog.addEventListener('close',scheduleParentPage);
 function show(n,s){
  const previousStep=step;
  const prevPage=page,oldCenter=isMapDeck&&prevPage>0?slides[prevPage-1].querySelector('.station.selected circle'):null;
@@ -165,7 +149,6 @@ function show(n,s){
  document.title=labels[n-1]+(isMapDeck?' · 2부 학부모 대입 지도':' · 2028 대입 설명회');
  if(prevPage!==n){main.scrollTo(0,0);slide.querySelector('.content')?.scrollTo(0,0)}
  if(dialog.open)dialog.close();
- scheduleParentPage();
 }
 function showContents(){
  opener=document.activeElement;
@@ -180,7 +163,7 @@ function showContents(){
   }
   const list=document.createElement('div');list.className='tocLinks';
   labels.forEach((label,i)=>{let a=document.createElement('a');a.href='#'+(i+1);a.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b>';a.append(document.createTextNode(label));if(i+1===page)a.setAttribute('aria-current','page');list.append(a)});inside.append(list);
- clearTimeout(autoTimer);dialog.showModal();dialog.scrollTop=0;
+ dialog.showModal();dialog.scrollTop=0;
 }
 function finishTermAnimation() {
  const panel = byId(termTabs[step].getAttribute('aria-controls'));
