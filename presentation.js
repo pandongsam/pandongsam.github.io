@@ -104,7 +104,7 @@ function route(){
   target.hash=String(formerMapPage)+(m[2]?'.'+m[2]:'');
   location.replace(target.href);return;
  }
- const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? [63,64,65,67][requested-76] : requested));
+ const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? [63,64,66,68][requested-76] : requested));
  const steps=n===glossaryPage?termTabs.length:n===guidePage?guidePanels.length:isMapDeck?journey[n-1].steps.length:1;
  const s=Math.max(0,Math.min(steps-1,m?Number(m[2]||1)-1:0));
  show(n,s);
@@ -121,6 +121,12 @@ function show(n,s){
  if(!page)slides.forEach((item,i)=>{item.hidden=i!==n-1});
  else if(page!==n)slides[page-1].hidden=true;
  page=n;step=s;const slide=slides[n-1];slide.hidden=false;
+ if(prevPage!==n){
+  slides[prevPage-1]?.querySelector('.film-player iframe')?.remove();
+  const template=slide.querySelector('.film-player template');
+  if(template)template.after(template.content.cloneNode(true));
+ }
+
  if(n===guidePage){
   guidePanels.forEach((panel,i)=>{panel.hidden=i!==s});
   slide.querySelectorAll('[data-step]').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===s)));
