@@ -59,3 +59,29 @@
  .strategy-line .differences{font-size:clamp(23px,6vw,33px);margin:12px 0}
  .strategy-close .academy-message{padding-left:12px;border-left-width:3px;font-size:16px}
 }
+
+/* Kyung Hee mathematics and science course matrix. */
+.khu-courses .content{margin-block:.65cqw;gap:.35cqw}
+.khu-courses .matrix-key{align-self:flex-end;font-size:.98cqw;font-weight:650;line-height:1.15}
+.khu-courses .core{color:#a12632;font-weight:800}
+.khu-courses .matrix{width:100%;table-layout:fixed;border-collapse:collapse;text-align:center;font-size:1.14cqw;line-height:1.18}
+.khu-courses .matrix .major-col{width:10.4%}
+.khu-courses .matrix th,.khu-courses .matrix td{padding:.18cqw .07cqw;border:1px solid var(--rule);vertical-align:middle}
+.khu-courses .matrix thead th{font-weight:750;background:var(--jade);color:white}
+.khu-courses .matrix thead .sci{background:var(--ink)}
+.khu-courses .matrix thead .focus{color:#ffec99}
+.khu-courses .matrix tbody th{color:var(--ink);background:#edf0ed;font-weight:700}
+.khu-courses .matrix .engineering th{background:#f0d6c9}
+.khu-courses .matrix .chemistry th{background:#bce3e4}
+.khu-courses .matrix .astronomy th{background:#ebcddd}
+.khu-courses .matrix .life th{background:#d3e4f0}
+.khu-courses .matrix tbody td:is(:nth-child(4),:nth-child(5)){background:#eef4fa}
+.khu-courses .matrix tbody td:is(:nth-child(7),:nth-child(10),:nth-child(13),:nth-child(16)){background:#e8edee}
+@media screen and (pointer:coarse) and (max-width:700px),screen and (pointer:coarse) and (orientation:landscape) and (max-height:550px) and (max-width:1000px){
+ .khu-courses .content{display:block}
+ .khu-courses .matrix-key{font-size:13px;text-align:right;margin:4px 0 8px}
+ .khu-courses .phone-scroll{max-width:100%;overflow-x:auto}
+ .khu-courses table.matrix{min-width:850px;font-size:14px}
+ .khu-courses .matrix th,.khu-courses .matrix td{padding:4px 2px}
+ .khu-courses .matrix tbody th,.khu-courses .matrix thead th[rowspan]{position:sticky;left:0;z-index:1}
+}
