@@ -92,7 +92,7 @@ function advanceTree() {
  treeTimer = setTimeout(land, 380);
 }
 
-const chapterStarts=[1,3,6,12,42,47,61,64];
+const chapterStarts=[1,3,6,12,43,48,62,65];
 const chapterLabels=['표지와 목차','00 시작하기 전에','2028 인원 분석','5등급제 실시에 따른 변화','논서술형 평가 역량 변화','통합형 수능에 따른 변화','2부 중학생 학부모 진학 안내 · 진짜 우리가 궁금한것은','마무리'];
 function route(){
  const m=location.hash.match(/^#(\d+)(?:\.(\d+))?$/);
@@ -104,7 +104,7 @@ function route(){
   target.hash=String(formerMapPage)+(m[2]?'.'+m[2]:'');
   location.replace(target.href);return;
  }
- const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? [64,65,67,69][requested-76] : requested));
+ const n=Math.max(1,Math.min(total,requested>=76 && requested<=79 ? [65,66,68,70][requested-76] : requested));
  const steps=n===glossaryPage?termTabs.length:n===guidePage?guidePanels.length:isMapDeck?journey[n-1].steps.length:1;
  const s=Math.max(0,Math.min(steps-1,m?Number(m[2]||1)-1:0));
  show(n,s);
@@ -192,6 +192,14 @@ function advance(direction){
 }
 byId('prev').onclick=()=>advance(-1);byId('next').onclick=()=>advance(1);
 byId('toc').onclick=showContents;
+byId('assessment-rubric')?.addEventListener('click',event=>{
+ opener=event.currentTarget;
+ dialog.className='assessment-rubric';
+ byId('paneltitle').textContent='과목별 수행평가 기준';
+ byId('panelbody').replaceChildren(byId('rubric-copy').content.cloneNode(true));
+ dialog.showModal();dialog.scrollTop=0;
+});
+
 byId('closepanel').onclick=()=>dialog.close();dialog.addEventListener('close',()=>opener?.focus());
 dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();if(e.target.closest('.tocLinks a,.jumpParts a'))dialog.close()});
 main.addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b)go(page,Number(b.dataset.step))});
