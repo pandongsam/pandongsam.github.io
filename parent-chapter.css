@@ -89,7 +89,7 @@
 /* School assessment example */
 .assessment-slide .assessment-body{margin:.85cqw 3.3cqw;display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0;gap:.7cqw}
 .assessment-intro{font-size:1.5cqw;line-height:1.45;word-break:keep-all}
-.assessment-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.4cqw}
+.assessment-grid{display:grid;grid-template-columns:1.18fr 1fr;gap:3.4cqw}
 .assessment-subject{border-top:2px solid var(--jade);padding-top:.7cqw;min-width:0}
 .assessment-subject h2{display:flex;justify-content:space-between;align-items:baseline;font-size:2.3cqw;letter-spacing:-.06em}
 .assessment-subject h2 small{color:var(--jade);font-size:1.22cqw;letter-spacing:0}
@@ -100,14 +100,12 @@
 .assessment-subject li{display:flex;align-items:baseline;gap:.6cqw;font-size:1.38cqw;line-height:1.54}
 .assessment-subject li i{display:inline-block;width:.6em;height:.6em;flex:none}
 .assessment-subject li b{margin-left:auto;font-variant-numeric:tabular-nums}
-.assessment-summary{border-top:1px solid var(--rule);padding-top:.55cqw;font-size:1.17cqw;line-height:1.5;word-break:keep-all}
+.assessment-summary strong{color:var(--jade);display:block;margin-bottom:.2em}.assessment-summary{border-top:1px solid var(--rule);padding-top:.55cqw;font-size:1.17cqw;line-height:1.5;word-break:keep-all}
 .assessment-flow{border-top:1px solid var(--rule);padding-top:.85cqw}
 .assessment-flow h2{font-size:1.3cqw;margin-bottom:.5cqw}.assessment-flow ol{list-style:none;display:flex;margin:0;padding:0}
 .assessment-flow ol{align-items:center;justify-content:space-between}
 .assessment-flow li{flex:1;display:flex;align-items:center;font-size:1.7cqw;font-weight:750;color:var(--jade)}
 .assessment-flow li:last-child{flex:none}.assessment-flow li:not(:last-child)::after{content:'→';margin-inline:auto;color:#7c9a8f;font-weight:400}
-.assessment-slide .sheetFoot button{font-size:max(12px,1cqw);font-weight:700;margin-left:auto}
-.assessment-rubric .inside h3{color:var(--jade);margin:1.1em 0 .4em}.assessment-rubric .inside p{line-height:1.7;word-break:keep-all}
 @media screen and (pointer:coarse) and (max-width:700px),screen and (pointer:coarse) and (orientation:landscape) and (max-height:550px) and (max-width:1000px){
  .assessment-slide .assessment-body{display:block;margin:10px 16px}
  .assessment-intro,.assessment-subject li{font-size:16px}.assessment-grid{display:block}.assessment-subject{padding:8px 0;margin-top:12px}

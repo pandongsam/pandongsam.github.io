@@ -192,13 +192,6 @@ function advance(direction){
 }
 byId('prev').onclick=()=>advance(-1);byId('next').onclick=()=>advance(1);
 byId('toc').onclick=showContents;
-byId('assessment-rubric')?.addEventListener('click',event=>{
- opener=event.currentTarget;
- dialog.className='assessment-rubric';
- byId('paneltitle').textContent='과목별 수행평가 기준';
- byId('panelbody').replaceChildren(byId('rubric-copy').content.cloneNode(true));
- dialog.showModal();dialog.scrollTop=0;
-});
 
 byId('closepanel').onclick=()=>dialog.close();dialog.addEventListener('close',()=>opener?.focus());
 dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();if(e.target.closest('.tocLinks a,.jumpParts a'))dialog.close()});
