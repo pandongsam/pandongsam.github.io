@@ -92,7 +92,7 @@ function advanceTree() {
  treeTimer = setTimeout(land, 380);
 }
 
-const chapterStarts=[1,3,6,12,29,45,50,64];
+const chapterStarts=[1,3,6,12,29,44,49,63];
 const chapterLabels=['표지와 목차','01 시작하기 전에','02 2028 인원 분석','03 5등급제 실시에 따른 변화','04 학생부종합전형','05 논서술형 평가 역량 변화','06 통합형 수능에 따른 변화','07 마무리'];
 function route(){
  const m=location.hash.match(/^#(\d+)(?:\.(\d+))?$/);
