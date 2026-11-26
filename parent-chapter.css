@@ -113,3 +113,17 @@
  .assessment-stack{font-size:12px;margin:6px 0}.assessment-subject li{gap:7px}.assessment-summary{font-size:14px;padding-top:5px}
  .assessment-flow{margin:8px 0;padding-top:10px}.assessment-flow li{font-size:16px}.assessment-slide .sheetFoot{flex-wrap:wrap}
 }
+
+/* Parent questions from the closing handout */
+.questions-slide .questions-grid{flex:1;min-height:0;margin:1cqw 3.3cqw;display:grid;grid-template-columns:.94fr 1.06fr;align-content:center;gap:1.15cqw 2.8cqw}
+.questions-grid article{border-top:2px solid var(--jade);padding:.55cqw 0;min-width:0}
+.questions-grid h2{font-size:1.83cqw;line-height:1.25;color:var(--jade);letter-spacing:-.045em;margin-bottom:.36cqw}
+.questions-grid p,.questions-grid dl{font-size:1.42cqw;line-height:1.42;word-break:keep-all;margin:0}
+.questions-grid dl{display:grid;grid-template-columns:max-content 1fr;gap:.24cqw .72cqw}
+.questions-grid dt{font-weight:750;color:var(--ink)}.questions-grid dd{margin:0}
+.questions-grid p+p{margin-top:.32cqw}
+@media screen and (pointer:coarse) and (max-width:700px),screen and (pointer:coarse) and (orientation:landscape) and (max-height:550px) and (max-width:1000px){
+ .questions-slide .questions-grid{display:block;margin:12px 16px}
+ .questions-grid article{padding:10px 0 12px}.questions-grid h2{font-size:21px;margin-bottom:6px}
+ .questions-grid dl,.questions-grid p{font-size:15px;line-height:1.5}.questions-grid dl{gap:4px 8px}
+}
