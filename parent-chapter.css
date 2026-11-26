@@ -115,15 +115,42 @@
 }
 
 /* Parent questions from the closing handout */
-.questions-slide .questions-grid{flex:1;min-height:0;margin:1cqw 3.3cqw;display:grid;grid-template-columns:.94fr 1.06fr;align-content:center;gap:1.15cqw 2.8cqw}
-.questions-grid article{border-top:2px solid var(--jade);padding:.55cqw 0;min-width:0}
-.questions-grid h2{font-size:1.83cqw;line-height:1.25;color:var(--jade);letter-spacing:-.045em;margin-bottom:.36cqw}
-.questions-grid p,.questions-grid dl{font-size:1.42cqw;line-height:1.42;word-break:keep-all;margin:0}
-.questions-grid dl{display:grid;grid-template-columns:max-content 1fr;gap:.24cqw .72cqw}
-.questions-grid dt{font-weight:750;color:var(--ink)}.questions-grid dd{margin:0}
-.questions-grid p+p{margin-top:.32cqw}
+.questions-slide .question-guide{display:flex;flex:1;min-height:0;flex-direction:column;justify-content:space-evenly;margin:.8cqw 3.3cqw;gap:1cqw}
+.question-panels{display:grid;grid-template-columns:1fr 1.32fr .98fr;gap:2cqw}
+.question-panel{min-width:0;border-top:2px solid var(--jade);padding-top:.6cqw}
+.question-guide h2{color:var(--jade);font-size:1.72cqw;line-height:1.2;letter-spacing:-.045em;margin-bottom:.7cqw}
+.question-guide :is(dd,li,td,p){word-break:keep-all}
+.school-options dl,.math-check ul{padding:0;margin:0;list-style:none}
+.school-options dl{display:grid;grid-template-columns:max-content 1fr;gap:.6cqw .65cqw;align-items:baseline}
+.school-options :is(dt,dd),.math-check li,.question-routes{font-size:1.18cqw;line-height:1.42}
+.school-options dt{font-weight:750;color:var(--jade);border-bottom:2px solid var(--rule)}.school-options dd{margin:0}
+.question-routes{width:100%;border-collapse:collapse;text-align:left}
+.question-routes th,.question-routes td{padding:.29cqw .42cqw;border-bottom:1px solid var(--rule)}
+.question-routes th{color:#fff;background:var(--ink);font-weight:650}
+.question-routes td:last-child{width:30%;font-weight:750;background:#e1efe8;color:var(--jade);white-space:nowrap}
+.question-routes small{font-size:.78em;color:#4e655d}
+.math-check li{position:relative;padding-left:1.12em;margin-bottom:.45cqw}.math-check li:before{content:'';position:absolute;left:0;top:.28em;width:.62em;height:.62em;border:1.5px solid var(--jade)}
+.math-check strong{display:block}
+.grade-path{border-top:1px solid var(--rule);padding-top:.8cqw}
+.grade-path ol{display:grid;grid-template-columns:repeat(4,1fr);list-style:none;margin:0;padding:0}
+.grade-path li{position:relative;padding-right:1.3cqw}
+.grade-path li:before{content:'';position:absolute;top:.8cqw;left:1cqw;right:0;border-top:2px solid var(--rule)}
+.grade-path li:last-child:before{display:none}
+.grade-path li b{position:relative;display:inline-block;background:var(--jade);color:white;font-size:1.13cqw;line-height:1.5;padding:0 .56cqw;border-radius:.15em}
+.grade-path h3{font-size:1.45cqw;line-height:1.3;margin:.48cqw 0 .25cqw}
+.grade-path p{font-size:1.16cqw;line-height:1.48}
 @media screen and (pointer:coarse) and (max-width:700px),screen and (pointer:coarse) and (orientation:landscape) and (max-height:550px) and (max-width:1000px){
- .questions-slide .questions-grid{display:block;margin:12px 16px}
- .questions-grid article{padding:10px 0 12px}.questions-grid h2{font-size:21px;margin-bottom:6px}
- .questions-grid dl,.questions-grid p{font-size:15px;line-height:1.5}.questions-grid dl{gap:4px 8px}
+ .questions-slide .question-guide,.question-panels{display:block}.questions-slide .question-guide{margin:12px 16px}
+ .question-panel,.grade-path{padding:10px 0}.question-guide h2{font-size:21px;margin-bottom:8px}
+ .school-options dl{gap:6px 12px}.school-options :is(dt,dd),.math-check li,.question-routes,.grade-path p{font-size:15px}
+ .question-routes th,.question-routes td{padding:5px}.math-check li{margin-bottom:5px}
+ .grade-path ol{display:block}.grade-path li{padding:0 0 12px 62px}.grade-path li b{position:absolute;left:0;top:0;font-size:14px;padding:1px 5px}
+ .grade-path li:before{top:18px;bottom:0;left:17px;right:auto;border-top:0;border-left:2px solid var(--rule)}
+ .grade-path h3{font-size:17px;margin:0 0 3px}
+}
+
+@media (min-width:701px) {
+ .contents.with-holistic{padding-block:3.4cqw}
+ .contents.with-holistic h1{margin-block:.9cqw 1.4cqw}
+ .contents.with-holistic a{padding-block:.65cqw}
 }
