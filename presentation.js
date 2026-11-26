@@ -92,8 +92,8 @@ function advanceTree() {
  treeTimer = setTimeout(land, 380);
 }
 
-const chapterStarts=[1,3,6,12,29,45,50,64,65];
-const chapterLabels=['표지와 목차','01 시작하기 전에','02 2028 인원 분석','03 5등급제 실시에 따른 변화','04 학생부종합전형','05 논서술형 평가 역량 변화','06 통합형 수능에 따른 변화','07 중학생 학부모 진학 안내 · 진짜 우리가 궁금한것은','08 마무리'];
+const chapterStarts=[1,3,6,12,29,45,50,64];
+const chapterLabels=['표지와 목차','01 시작하기 전에','02 2028 인원 분석','03 5등급제 실시에 따른 변화','04 학생부종합전형','05 논서술형 평가 역량 변화','06 통합형 수능에 따른 변화','07 마무리'];
 function route(){
  const m=location.hash.match(/^#(\d+)(?:\.(\d+))?$/);
  // The former combined deck opened Part 2 at pages 80–85.
@@ -149,7 +149,7 @@ function show(n,s){
   }
  }
  byId('count').textContent=n+' / '+total;byId('progress').style.width=(n/total*100)+'%';
- byId('part').textContent=slide.classList.contains('parent-chapter')?'2부　중학생 학부모 진학 안내':!isMapDeck&&n>=chapterStarts.at(-1)?'마무리':!isMapDeck?'1부　대교협 설명회':'2부　학부모 대입 지도';
+ byId('part').textContent=!isMapDeck&&n>=chapterStarts.at(-1)?'마무리':!isMapDeck?'1부　대교협 설명회':'2부　학부모 대입 지도';
  byId('prev').disabled=n===1;byId('next').disabled=n===total;
  byId('announce').textContent=n+'장. '+labels[n-1];
  document.title=labels[n-1]+(isMapDeck?' · 2부 학부모 대입 지도':' · 2028 대입 설명회');
